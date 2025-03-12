@@ -18,8 +18,6 @@ const DesktopItem = ({ href, label, icon: Icon, active, onClick }: Props) => {
       return onClick();
     }
   };
-
-  console.log(`active status: ${active}`)
   return (
     <li onClick={handleClick}>
       <Link href={href} className={clsx(`
