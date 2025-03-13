@@ -1,6 +1,7 @@
 "use client";
 
 import { User } from "@prisma/client";
+import { getSession } from "next-auth/react";
 import Image from "next/image";
 import React from "react";
 
@@ -9,6 +10,9 @@ interface Props {
 }
 
 const Avatar = ({ user }: Props) => {
+
+  const session= getSession();
+  console.log(session)
   return (
     <div className="relative">
       <div className="relative inline-block rounded-full overflow-hidden h-9 w-9 md:h-11 md:w-11">
