@@ -14,6 +14,7 @@ interface Props {
 
 const ConversationList = ({ initialItems }: Props) => {
   const [items, setItems] = useState(initialItems);
+  const [isModalOpen, setIsModalOpen]= useState(false)
 
   const router = useRouter();
 
@@ -37,6 +38,7 @@ const ConversationList = ({ initialItems }: Props) => {
             Messages
           </div>
           <div
+          onClick={()=>setIsModalOpen(true)}
             className="rounded-full p-2 bg-gray-100 
           text-gray-600 cursor-pointer hover:opacity-75 transition"
           >

@@ -8,6 +8,7 @@ export default withAuth ({
 
 export const config ={
     matcher : [
-        '/users/:path*'   // This will also include the nested routes inside /users
+        '/users/:path*',   // This will also include the nested routes inside /users
+        '/conversations/:path*'
     ]
 }

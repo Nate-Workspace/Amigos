@@ -12,7 +12,7 @@ interface IParams{
 
 const ConversationId = async ({params}: {params:IParams}) => {
     
-    console.log(params.conversationId)
+    console.log( await params.conversationId)
     const conversation= await getConversationById(params.conversationId)
     const messages = await getMessages(params.conversationId)
 
