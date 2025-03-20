@@ -4,9 +4,10 @@ import Avatar from '@/app/components/Avatar'
 import { FullMessageType } from '@/app/types'
 import clsx from 'clsx'
 import { useSession } from 'next-auth/react'
-import React from 'react'
+import React, { useState } from 'react'
 import {format} from 'date-fns'
 import Image from 'next/image'
+import ImageModal from './ImageModal'
 
 interface Props{
     isLast: boolean,
@@ -15,6 +16,8 @@ interface Props{
 
 const MessageBox = ({isLast, data}: Props) => {
     const session= useSession()
+    const [isImageModalOpen, setIsImageModalOpen]= useState(false)
+
     const isOwn= session?.data?.user?.email=== data?.sender?.email
 
     // This will give us string of names joined with comma
@@ -55,9 +58,12 @@ const MessageBox = ({isLast, data}: Props) => {
                     {format(new Date(data.createdAt),'p')}
                 </div>
             </div>
-            <div className={message}>
+            <div 
+            className={message}>
+                <ImageModal src={data.image} isOpen={isImageModalOpen} onClose={()=>setIsImageModalOpen(false)}/>
                 {data.image ? (
                     <Image 
+                    onClick={()=>setIsImageModalOpen(true)}
                     alt='= "Image'
                     height="288"
                     width="288"
