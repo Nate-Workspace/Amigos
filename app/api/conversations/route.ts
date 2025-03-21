@@ -1,6 +1,7 @@
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/app/libs/prismadb"
+import { pusherServer } from "@/app/libs/pusher";
 
 export async function POST(request: NextRequest){
 
@@ -38,6 +39,13 @@ export async function POST(request: NextRequest){
                 },
                 include: {
                     users: true
+                }
+            })
+
+            //Pusher code for a group conversation--------
+            newConversation.users.forEach(user=>{
+                if(user.email){
+                    pusherServer.trigger(user.email, 'conversation:new', newConversation)
                 }
             })
 
@@ -80,9 +88,15 @@ export async function POST(request: NextRequest){
                     ]
                 }
             },
-            //To not just fetch the userId but also the user data aswell.
             include:{
                 users: true
+            }
+        })
+
+        //Pusher code for a single conversation------------
+        newConversation.users.map(user=>{
+            if(user.email){
+                pusherServer.trigger(user.email, 'conversation:new', newConversation)
             }
         })
 
