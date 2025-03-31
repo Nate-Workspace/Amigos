@@ -14,6 +14,7 @@ import { BsGithub, BsGoogle } from "react-icons/bs";
 import {toast} from "react-hot-toast";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { emitKeypressEvents } from "readline";
 
 type variant = "LOGIN" | "REGISTER";
 
@@ -26,9 +27,10 @@ const AuthForm = () => {
   //Checking if there is an authenticated user
   useEffect(()=>{
     if(session.status==='authenticated'){
+      console.log("again and again")
       router.push('/users')
     }
-  },[session?.status, router])
+  },[])
 
   //Memoizing the variant status
   const toggleVariant = useCallback(() => {

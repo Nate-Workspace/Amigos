@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import ToasterContext from "./context/ToasterContext";
 import "./globals.css";
 import AuthContext from "./context/AuthContext";
+import ActiveStatus from "./components/ActiveStatus";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,6 +32,7 @@ export default function RootLayout({
       >
         <AuthContext>
           <ToasterContext />
+          <ActiveStatus/>
           {children}
         </AuthContext>
       </body>
