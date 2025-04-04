@@ -24,7 +24,7 @@ const ConversationBox = ({ data, selected }: Props) => {
   //Handling the onClick of a conversation
   const handleClick = useCallback(() => {
     router.push(`/conversations/${data.id}`);
-  }, []);
+  }, [data.id, router]);
 
   //Getting the last message
   const lastMessage = useMemo(() => {

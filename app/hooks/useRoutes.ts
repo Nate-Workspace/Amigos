@@ -1,9 +1,10 @@
-import { usePathname } from "next/navigation"
+import { usePathname, redirect } from "next/navigation"                            
 import useConversation from "./useConversation"
 import { useMemo } from "react"
 import { HiChat, HiUsers } from "react-icons/hi"
 import { signOut,useSession } from "next-auth/react"
 import { HiArrowLeftOnRectangle } from "react-icons/hi2"
+import axios from "axios"
 
 const useRoutes = () => {
   const pathname= usePathname()
@@ -26,7 +27,7 @@ const useRoutes = () => {
         label: "logout",
         href: '#',
         onClick: () => {
-          signOut({ callbackUrl: "/" }); 
+          signOut({ callbackUrl: "/" });
         },
         icon: HiArrowLeftOnRectangle
     }
@@ -36,3 +37,8 @@ const useRoutes = () => {
 }
 
 export default useRoutes
+
+// onClick: () => {
+//   signOut({redirect: false, callbackUrl: "/" });
+//   redirect("/") 
+// }

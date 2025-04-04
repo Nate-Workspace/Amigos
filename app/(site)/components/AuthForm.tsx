@@ -4,17 +4,16 @@ Requirements:
 npm i @RiTailwindCssFill/forms
 
 */
-import axios from "axios";
-import { useCallback, useEffect, useState } from "react";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import Input from "@/app/components/inputs/Input";
 import Button from "@/app/components/Button";
-import AuthSocialButton from "./AuthSocialButton";
-import { BsGithub, BsGoogle } from "react-icons/bs";
-import {toast} from "react-hot-toast";
+import Input from "@/app/components/inputs/Input";
+import axios from "axios";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { emitKeypressEvents } from "readline";
+import { useCallback, useEffect, useState } from "react";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
+import { BsGithub, BsGoogle } from "react-icons/bs";
+import AuthSocialButton from "./AuthSocialButton";
 
 type variant = "LOGIN" | "REGISTER";
 
@@ -30,7 +29,7 @@ const AuthForm = () => {
       console.log("again and again")
       router.push('/users')
     }
-  },[])
+  },[router, session.status])
 
   //Memoizing the variant status
   const toggleVariant = useCallback(() => {

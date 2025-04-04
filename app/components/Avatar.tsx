@@ -11,11 +11,12 @@ interface Props {
 }
 
 const Avatar = ({ user }: Props) => {
-  const session = getSession();
-  console.log(session);
 
   const { members } = useActiveList();
+  // const email = user?.email || '';
+  console.log(members)
   const isActive = members.indexOf(user?.email!) !== -1;
+  
   return (
     <div className="relative">
       <div className="relative inline-block rounded-full overflow-hidden h-9 w-9 md:h-11 md:w-11">

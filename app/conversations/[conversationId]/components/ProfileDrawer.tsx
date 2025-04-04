@@ -25,7 +25,7 @@ const ProfileDrawer = ({ data, isOpen, onClose }: Props) => {
 
   //Updating the Active status with Pusher
   const {members}= useActiveList()
-  const isActive= members.indexOf(otherUser?.email!) !== -1;
+  const isActive = members.indexOf(otherUser?.email!) !== -1;
 
   const joinedDate = useMemo(() => {
     return format(new Date(otherUser.createdAt), "PP");

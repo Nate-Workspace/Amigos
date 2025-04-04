@@ -1,14 +1,11 @@
-import {withAuth} from 'next-auth/middleware'
+import { withAuth } from "next-auth/middleware";
 
-export default withAuth ({
-    pages:{
-        signIn: "/"
-    }
-})
+export default withAuth({
+  pages: {
+    signIn: "/", 
+  },
+});
 
-export const config ={
-    matcher : [
-        '/users/:path*',   // This will also include the nested routes inside /users
-        '/conversations/:path*'
-    ]
-}
+export const config = {
+  matcher: ["/users/:path*", "/conversations/:path*"], 
+};

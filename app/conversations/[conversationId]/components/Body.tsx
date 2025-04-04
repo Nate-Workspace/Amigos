@@ -19,7 +19,7 @@ const Body = ({initialMessages}: BodyProps) => {
 
   useEffect(()=>{
     axios.post(`/api/conversations/${conversationId}/seen`)
-  },[])
+  },[conversationId])
 
 
   //Pusher code on the client
@@ -60,7 +60,7 @@ const Body = ({initialMessages}: BodyProps) => {
       pusherClient.unbind('messages:new', messageHandler)
       pusherClient.unbind('message:update',updateMessageHandler)
     }
-  },[conversationId])
+  },[conversationId, bottomRef])
   //-----------------------------------
 
 
